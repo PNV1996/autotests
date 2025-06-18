@@ -56,5 +56,3 @@ def browser():
     yield browser
     browser.close()
     playwright.stop()
-
-

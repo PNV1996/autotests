@@ -77,4 +77,6 @@ class TestBookings():
         delite_booking=auth_session.delete(f"{BASE_URL}/booking/{booking_id}")
         assert delite_booking.status_code == 201,  'Букинг не удалился'
         get_booking=get_booking_by_id(auth_session, booking_id)
-        assert get_booking.status_code == 404
+        assert get_booking.status_code == 404, 'Букинг не удалился'
+
+
