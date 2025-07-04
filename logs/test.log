@@ -1,0 +1,155 @@
+[2025-07-04 11:25:43] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 11:25:43] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce
+[2025-07-04 11:25:45] [INFO] InventoryPage - Добавляем любой товар в корзину
+[2025-07-04 11:25:45] [INFO] CheckoutPage - Заполняем чек-аут: Jon, Doe, 234235
+[2025-07-04 11:25:46] [INFO] TestCheckout - Тест завершён успешно
+[2025-07-04 11:53:01] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 11:53:01] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce
+[2025-07-04 11:53:02] [INFO] InventoryPage - Добавляем любой товар в корзину
+[2025-07-04 11:53:02] [INFO] CheckoutPage - Заполняем чек-аут: Jon, Doe, 234235
+[2025-07-04 11:53:04] [INFO] TestCheckout - Тест завершён успешно
+[2025-07-04 11:53:04] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 11:53:04] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce1
+[2025-07-04 11:53:11] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
+[2025-07-04 11:53:11] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 11:53:11] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: locked_out_user, secret_sauce
+[2025-07-04 11:53:17] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
+[2025-07-04 12:17:20] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:17:20] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce
+[2025-07-04 12:17:22] [INFO] InventoryPage - Добавляем любой товар в корзину
+[2025-07-04 12:17:22] [INFO] CheckoutPage - Заполняем чек-аут: Jon, Doe, 234235
+[2025-07-04 12:17:23] [INFO] TestCheckout - Тест завершён успешно
+[2025-07-04 12:17:23] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:17:23] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce1
+[2025-07-04 12:17:30] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
+[2025-07-04 12:17:30] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:17:30] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: locked_out_user, secret_sauce
+[2025-07-04 12:17:36] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
+[2025-07-04 12:21:25] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:21:25] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce
+[2025-07-04 12:21:27] [INFO] InventoryPage - Добавляем любой товар в корзину
+[2025-07-04 12:21:27] [INFO] CheckoutPage - Заполняем чек-аут: Jon, Doe, 234235
+[2025-07-04 12:21:28] [INFO] TestCheckout - Тест завершён успешно
+[2025-07-04 12:21:28] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:21:28] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce1
+[2025-07-04 12:21:35] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
+[2025-07-04 12:21:35] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:21:35] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: locked_out_user, secret_sauce
+[2025-07-04 12:21:41] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
+[2025-07-04 12:23:57] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:23:57] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce
+[2025-07-04 12:23:59] [INFO] InventoryPage - Добавляем любой товар в корзину
+[2025-07-04 12:23:59] [INFO] CheckoutPage - Заполняем чек-аут: Jon, Doe, 234235
+[2025-07-04 12:24:00] [INFO] TestCheckout - Тест завершён успешно
+[2025-07-04 12:24:00] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:24:00] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce1
+[2025-07-04 12:24:07] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
+[2025-07-04 12:24:07] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:24:07] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: locked_out_user, secret_sauce
+[2025-07-04 12:24:13] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
+[2025-07-04 12:28:37] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:28:37] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce
+[2025-07-04 12:28:38] [INFO] InventoryPage - Добавляем любой товар в корзину
+[2025-07-04 12:28:38] [INFO] CheckoutPage - Заполняем чек-аут: Jon, Doe, 234235
+[2025-07-04 12:28:40] [INFO] TestCheckout - Тест завершён успешно
+[2025-07-04 12:28:40] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:28:40] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce1
+[2025-07-04 12:28:46] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
+[2025-07-04 12:28:46] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:28:46] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: locked_out_user, secret_sauce
+[2025-07-04 12:28:53] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
+[2025-07-04 12:33:36] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:33:36] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce
+[2025-07-04 12:33:38] [INFO] InventoryPage - Добавляем любой товар в корзину
+[2025-07-04 12:33:38] [INFO] CheckoutPage - Заполняем чек-аут: Jon, Doe, 234235
+[2025-07-04 12:33:39] [INFO] TestCheckout - Тест завершён успешно
+[2025-07-04 12:33:39] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:33:39] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce1
+[2025-07-04 12:33:46] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Username and password do not match any user in this serviceLoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
+[2025-07-04 12:33:46] [INFO] TestCheckout - Начинаем логин
+[2025-07-04 12:33:46] [INFO] LoginPage - Выполняем авторизацию заполняя логин и пароль: locked_out_user, secret_sauce
+[2025-07-04 12:33:52] [ERROR] TestCheckout - Ошибка при авторизации: Locator expected to contain text 'Products'
+Actual value: Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce 
+Call log:
+  - LocatorAssertions.to_contain_text with timeout 5000ms
+  - waiting for locator("body")
+    9 × locator resolved to <body>…</body>
+      - unexpected value "Swag LabsEpic sadface: Sorry, this user has been locked out.LoginAccepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_userPassword for all users:secret_sauce"
+
