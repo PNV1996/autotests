@@ -1,4 +1,4 @@
-from UI.pomodoro.Pages.base_page import BasePage
+from UI.saucedemo.Pages.base_page import BasePage
 from utils.logger import get_logger
 
 class InventoryPage(BasePage):

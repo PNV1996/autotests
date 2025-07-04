@@ -2,9 +2,9 @@ import pytest
 import time
 from playwright.sync_api import sync_playwright
 
-from UI.pomodoro.Pages.checkout_page import CheckoutPage
-from UI.pomodoro.Pages.inventory_page import InventoryPage
-from UI.pomodoro.Pages.login_page import LoginPage
+from UI.saucedemo.Pages.checkout_page import CheckoutPage
+from UI.saucedemo.Pages.inventory_page import InventoryPage
+from UI.saucedemo.Pages.login_page import LoginPage
 from utils.logger import get_logger
 
 logger = get_logger("TestCheckout")
