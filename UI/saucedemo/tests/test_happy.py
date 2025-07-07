@@ -2,6 +2,7 @@ import pytest
 import time
 from playwright.sync_api import sync_playwright
 
+
 from UI.saucedemo.Pages.checkout_page import CheckoutPage
 from UI.saucedemo.Pages.inventory_page import InventoryPage
 from UI.saucedemo.Pages.login_page import LoginPage
@@ -24,7 +25,7 @@ logger = get_logger("TestCheckout")
     ]
 )
 
-
+@pytest.mark.smoke
 def test_add_items_and_checkout(page, username, password, first_name, last_name, postal_code):
     login_page=LoginPage(page)
     inventory_page=InventoryPage(page)
