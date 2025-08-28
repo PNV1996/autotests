@@ -7,7 +7,7 @@ import allure
 @pytest.fixture(scope="session")
 def browser():
     playwright = sync_playwright().start()
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     yield browser
     browser.close()
     playwright.stop()
@@ -18,11 +18,6 @@ def page(browser):
     page = browser.new_page()
     yield page
     page.close()
-
-
-import pytest
-import os
-import allure
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
