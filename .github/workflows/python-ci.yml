@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+  schedule: # 🔹 запуск по расписанию каждый день в 01:00 UTC
+    - cron: '0 1 * * *'
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
