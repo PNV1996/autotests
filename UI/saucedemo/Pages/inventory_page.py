@@ -1,6 +1,7 @@
 from UI.saucedemo.Pages.base_page import BasePage
 from utils.logger import get_logger
 
+
 class InventoryPage(BasePage):
     logger = get_logger("InventoryPage")
 
