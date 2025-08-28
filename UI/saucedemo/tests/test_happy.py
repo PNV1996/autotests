@@ -10,6 +10,7 @@ from utils.logger import get_logger
 
 logger = get_logger("TestCheckout")
 
+
 @pytest.mark.parametrize(
     "username, password, first_name, last_name, postal_code",
     [
@@ -20,22 +21,21 @@ logger = get_logger("TestCheckout")
         # ("performance_glitch_user", "secret_sauce", "Brad", "Smith", "123456"),
         # ("error_user", "secret_sauce", "Alice", "Smith", "123456"),
         # ("visual_user", "secret_sauce", "Alice", "Smith", "123456"),
-
-
-    ]
+    ],
 )
-
 @pytest.mark.smoke
-def test_add_items_and_checkout(page, username, password, first_name, last_name, postal_code):
-    login_page=LoginPage(page)
-    inventory_page=InventoryPage(page)
-    checkout_page=CheckoutPage(page)
+def test_add_items_and_checkout(
+    page, username, password, first_name, last_name, postal_code
+):
+    login_page = LoginPage(page)
+    inventory_page = InventoryPage(page)
+    checkout_page = CheckoutPage(page)
 
     logger.info("Начинаем логин")
     try:
         login_page.login(username, password)
-        if page.locator('.error-message-container').is_visible():
-            error_text = page.locator('.error-message-container').inner_text()
+        if page.locator(".error-message-container").is_visible():
+            error_text = page.locator(".error-message-container").inner_text()
             logger.warning(f"Ошибка при авторизации: {error_text}")
             pytest.fail(f"Ошибка авторизации: {error_text}")
     except Exception as e:
@@ -46,7 +46,3 @@ def test_add_items_and_checkout(page, username, password, first_name, last_name,
     checkout_page.start_checkout()
     checkout_page.fill_checkout_for(first_name, last_name, postal_code)
     logger.info("Тест завершён успешно")
-
-
-
-

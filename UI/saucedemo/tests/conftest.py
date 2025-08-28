@@ -3,6 +3,7 @@ from playwright.sync_api import sync_playwright
 import os
 import allure
 
+
 @pytest.fixture(scope="session")
 def browser():
     playwright = sync_playwright().start()
@@ -11,15 +12,18 @@ def browser():
     browser.close()
     playwright.stop()
 
+
 @pytest.fixture(scope="function")
 def page(browser):
     page = browser.new_page()
     yield page
     page.close()
 
+
 import pytest
 import os
 import allure
+
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
@@ -35,9 +39,5 @@ def pytest_runtest_makereport(item, call):
             allure.attach(
                 screenshot_bytes,
                 name="Failure Screenshot",
-                attachment_type=allure.attachment_type.PNG
+                attachment_type=allure.attachment_type.PNG,
             )
-
-
-
-
