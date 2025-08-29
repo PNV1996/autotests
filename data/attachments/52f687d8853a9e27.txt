@@ -1,0 +1,5 @@
+INFO     TestCheckout:test_happy.py:28 Начинаем логин
+INFO     LoginPage:login_page.py:19 Выполняем авторизацию заполняя логин и пароль: standard_user, secret_sauce
+INFO     InventoryPage:inventory_page.py:16 Добавляем любой товар в корзину
+INFO     CheckoutPage:checkout_page.py:23 Заполняем чек-аут: Jon, Doe, 234235
+INFO     TestCheckout:test_happy.py:53 Тест завершён успешно
