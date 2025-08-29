@@ -13,7 +13,7 @@ jobs:
   lint-and-test:
     runs-on: ubuntu-latest
 
-    permissions:   # FIX: права для Pages и артефактов
+    permissions:
       contents: read
       pages: write
       id-token: write
@@ -23,7 +23,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Python setup
+      # 2️⃣ Setup Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -47,9 +47,9 @@ jobs:
       - name: Run tests
         run: pytest --junitxml=report.xml --alluredir=allure-results
 
-      # 7️⃣ Upload test artifacts
+      # 7️⃣ Upload test artifacts (новая версия)
       - name: Upload test results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: pytest-results
           path: |
@@ -66,10 +66,18 @@ jobs:
       - name: Generate Allure Report
         run: /tmp/allure/allure-2.29.0/bin/allure generate allure-results -o allure-report --clean
 
-      # 🔹 Upload Allure report to GitHub Pages (новый способ)
+      # 🔹 Upload Allure report as artifact
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report
+
+      # 🔹 Configure GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v3
 
+      # 🔹 Upload Pages artifact (официальный способ)
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
