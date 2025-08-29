@@ -27,7 +27,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install allure-pytest==2.13.1  # установка allure для Python
 
       # 4️⃣ Устанавливаем браузеры для Playwright + системные зависимости
       - name: Install Playwright Browsers
