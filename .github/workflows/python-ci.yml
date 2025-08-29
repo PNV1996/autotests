@@ -27,7 +27,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          python -m playwright install
+          python -m playwright install --with-deps
 
       # 4️⃣ Проверяем стиль кода
       - name: Run linters
@@ -37,11 +37,10 @@ jobs:
       - name: Run tests with pytest
         run: pytest --junitxml=report.xml --alluredir=allure-results
 
-      # 6️⃣ Устанавливаем Allure CLI
-      - name: Install Allure CLI
+      # 6️⃣ Устанавливаем Java и Allure CLI
+      - name: Install Java & Allure CLI
         run: |
-          sudo apt update
-          sudo apt install -y openjdk-17-jdk wget
+          sudo apt update && sudo apt install -y openjdk-17-jdk wget
           wget https://github.com/allure-framework/allure2/releases/download/2.34.1/allure-2.34.1.tgz
           tar -zxvf allure-2.34.1.tgz
           sudo mv allure-2.34.1 /opt/allure
@@ -61,4 +60,5 @@ jobs:
 
       # 9️⃣ Выводим ссылку на отчёт
       - name: Show Allure Report URL
-        run: echo "Allure Report URL: https://${{ github.repository_owner }}.github.io/${{ github.repository }}/"
+        run: |
+          echo "Allure Report URL: https://${{ github.repository_owner }}.github.io/${{ github.repository }}/"
