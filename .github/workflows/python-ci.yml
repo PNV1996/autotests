@@ -49,14 +49,15 @@ jobs:
 
       # 7️⃣ Генерируем HTML-отчёт
       - name: Generate Allure Report
-        run: allure generate allure-results --clean -o allure-report
+        run: allure generate allure-results --clean -o ./allure-report
 
       # 8️⃣ Деплой отчёта на GitHub Pages
       - name: Deploy Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           publish_dir: ./allure-report
+          target_branch: gh-pages
 
       # 9️⃣ Выводим ссылку на отчёт
       - name: Show Allure Report URL
