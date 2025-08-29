@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Забираем код из репозитория
+      # 1️⃣ Забираем код
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -22,13 +22,13 @@ jobs:
         with:
           python-version: '3.12'
 
-      # 3️⃣ Устанавливаем зависимости
+      # 3️⃣ Устанавливаем зависимости из requirements.txt
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4️⃣ Устанавливаем браузеры для Playwright + системные зависимости
+      # 4️⃣ Устанавливаем браузеры для Playwright
       - name: Install Playwright Browsers
         run: |
           python -m playwright install --with-deps
@@ -43,13 +43,20 @@ jobs:
         run: |
           pytest --junitxml=report.xml --alluredir=allure-results
 
-      # 7️⃣ Генерируем HTML-отчет Allure
+      # 7️⃣ Устанавливаем Allure CLI
+      - name: Install Allure CLI
+        run: |
+          sudo apt-add-repository ppa:qameta/allure -y
+          sudo apt-get update
+          sudo apt-get install allure -y
+          allure --version
+
+      # 8️⃣ Генерируем HTML-отчет Allure
       - name: Generate Allure Report
         run: |
-          pip install allure-commandline
           allure generate allure-results --clean -o allure-report
 
-      # 8️⃣ Публикуем отчет как GitHub Pages/Artifacts
+      # 9️⃣ Загружаем HTML-отчет как артефакт
       - name: Upload Allure HTML Report
         uses: actions/upload-artifact@v4
         with:
