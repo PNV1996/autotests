@@ -6,46 +6,48 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-  schedule: # запуск по расписанию каждый день в 01:00 UTC
+  schedule:
     - cron: '0 1 * * *'
 
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
 
+    permissions:   # FIX: права для Pages и артефактов
+      contents: read
+      pages: write
+      id-token: write
+
     steps:
-      # 1️⃣ Забираем код из репозитория
+      # 1️⃣ Checkout
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Устанавливаем нужную версию Python
+      # 2️⃣ Python setup
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      # 3️⃣ Устанавливаем зависимости из requirements.txt
+      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4️⃣ Скачиваем браузеры для Playwright + системные зависимости
+      # 4️⃣ Playwright browsers
       - name: Install Playwright Browsers
-        run: |
-          python -m playwright install --with-deps
+        run: python -m playwright install --with-deps
 
-      # 5️⃣ Проверяем стиль кода с помощью Black
+      # 5️⃣ Lint
       - name: Run linters
-        run: |
-          black --check .
+        run: black --check .
 
-      # 6️⃣ Запускаем тесты через pytest и сохраняем результаты для Allure
-      - name: Run tests with pytest
-        run: |
-          pytest --junitxml=report.xml --alluredir=allure-results
+      # 6️⃣ Run tests with pytest
+      - name: Run tests
+        run: pytest --junitxml=report.xml --alluredir=allure-results
 
-      # 7️⃣ Загружаем результаты тестов как артефакты
+      # 7️⃣ Upload test artifacts
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
@@ -54,35 +56,29 @@ jobs:
             report.xml
             allure-results/
 
-      # 🔹 новый шаг — скачиваем и устанавливаем allure-cli
+      # 8️⃣ Install Allure CLI
       - name: Install Allure CLI
         run: |
           wget https://github.com/allure-framework/allure2/releases/download/2.29.0/allure-2.29.0.zip
           unzip allure-2.29.0.zip -d /tmp/allure
 
-      # 🔹 новый шаг — генерируем красивый HTML отчёт
+      # 9️⃣ Generate Allure HTML report
       - name: Generate Allure Report
-        run: |
-          /tmp/allure/allure-2.29.0/bin/allure generate allure-results -o allure-report --clean
+        run: /tmp/allure/allure-2.29.0/bin/allure generate allure-results -o allure-report --clean
 
-      # 🔹 новый шаг — загружаем HTML отчёт как артефакт
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v4
+      # 🔹 Upload Allure report to GitHub Pages (новый способ)
+      - name: Configure Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: allure-report
-          path: allure-report
+          path: ./allure-report
 
-      # 🔹 новый шаг — публикуем Allure Report в GitHub Pages
-      - name: Deploy Allure Report to Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-report
-
-      # 🔹 новый шаг — отправка ссылки в Telegram
+      # 🔹 Telegram notification
       - name: Send Telegram message
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.TELEGRAM_TO }} # id чата/юзера
-          token: ${{ secrets.TELEGRAM_TOKEN }} # токен бота
-          message: "✅ Allure Report доступен: https://<user>.github.io/<repo>/"
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: "✅ Allure Report доступен: https://PNV1996.github.io/autotests/"
