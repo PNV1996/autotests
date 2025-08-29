@@ -1,4 +1,4 @@
-name: Python CI
+name: Python CI with Allure Report
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint-and-test:
+  test-and-allure:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,44 +22,43 @@ jobs:
         with:
           python-version: '3.12'
 
-      # 3️⃣ Устанавливаем зависимости из requirements.txt
+      # 3️⃣ Устанавливаем зависимости
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          python -m playwright install
 
-      # 4️⃣ Устанавливаем браузеры для Playwright
-      - name: Install Playwright Browsers
-        run: |
-          python -m playwright install --with-deps
-
-      # 5️⃣ Проверяем стиль кода
+      # 4️⃣ Проверяем стиль кода
       - name: Run linters
-        run: |
-          black --check .
+        run: black --check .
 
-      # 6️⃣ Запускаем тесты через pytest с Allure
+      # 5️⃣ Запускаем тесты с генерацией Allure результатов
       - name: Run tests with pytest
-        run: |
-          pytest --junitxml=report.xml --alluredir=allure-results
+        run: pytest --junitxml=report.xml --alluredir=allure-results
 
-      # 7️⃣ Устанавливаем Allure CLI через официальный архив
+      # 6️⃣ Устанавливаем Allure CLI
       - name: Install Allure CLI
         run: |
+          sudo apt update
+          sudo apt install -y openjdk-17-jdk wget
           wget https://github.com/allure-framework/allure2/releases/download/2.34.1/allure-2.34.1.tgz
           tar -zxvf allure-2.34.1.tgz
           sudo mv allure-2.34.1 /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
           allure --version
 
-      # 8️⃣ Генерируем HTML-отчет Allure
+      # 7️⃣ Генерируем HTML-отчёт
       - name: Generate Allure Report
-        run: |
-          allure generate allure-results --clean -o allure-report
+        run: allure generate allure-results --clean -o allure-report
 
-      # 9️⃣ Загружаем HTML-отчет как артефакт
-      - name: Upload Allure HTML Report
-        uses: actions/upload-artifact@v4
+      # 8️⃣ Деплой отчёта на GitHub Pages
+      - name: Deploy Allure Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: allure-report
-          path: allure-report/
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+
+      # 9️⃣ Выводим ссылку на отчёт
+      - name: Show Allure Report URL
+        run: echo "Allure Report URL: https://${{ github.repository_owner }}.github.io/${{ github.repository }}/"
