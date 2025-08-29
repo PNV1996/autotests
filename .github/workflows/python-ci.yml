@@ -6,6 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
@@ -15,38 +16,43 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Устанавливаем нужную версию Python
+      # 2️⃣ Устанавливаем Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      # 3️⃣ Устанавливаем зависимости из requirements.txt
+      # 3️⃣ Устанавливаем зависимости
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install allure-pytest==2.13.1  # установка allure для Python
 
-      # 4️⃣ Скачиваем браузеры для Playwright + системные зависимости
+      # 4️⃣ Устанавливаем браузеры для Playwright + системные зависимости
       - name: Install Playwright Browsers
         run: |
           python -m playwright install --with-deps
 
-      # 5️⃣ Проверяем стиль кода с помощью Black
+      # 5️⃣ Проверяем стиль кода
       - name: Run linters
         run: |
           black --check .
 
-      # 6️⃣ Запускаем тесты через pytest и сохраняем результаты для Allure
+      # 6️⃣ Запускаем тесты через pytest с Allure
       - name: Run tests with pytest
         run: |
           pytest --junitxml=report.xml --alluredir=allure-results
 
-      # 7️⃣ Загружаем результаты тестов как артефакты
-      - name: Upload test results
+      # 7️⃣ Генерируем HTML-отчет Allure
+      - name: Generate Allure Report
+        run: |
+          pip install allure-commandline
+          allure generate allure-results --clean -o allure-report
+
+      # 8️⃣ Публикуем отчет как GitHub Pages/Artifacts
+      - name: Upload Allure HTML Report
         uses: actions/upload-artifact@v4
         with:
-          name: pytest-results
-          path: |
-            report.xml
-            allure-results/
+          name: allure-report
+          path: allure-report/
