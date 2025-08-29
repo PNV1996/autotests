@@ -46,9 +46,9 @@ jobs:
       # 7️⃣ Устанавливаем Allure CLI через официальный архив
       - name: Install Allure CLI
         run: |
-          wget https://github.com/allure-framework/allure2/releases/download/2.27.3/allure-2.27.3.tgz
-          tar -zxvf allure-2.27.3.tgz
-          sudo mv allure-2.27.3 /opt/allure
+          wget https://github.com/allure-framework/allure2/releases/download/2.34.1/allure-2.34.1.tgz
+          tar -zxvf allure-2.34.1.tgz
+          sudo mv allure-2.34.1 /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
           allure --version
 
