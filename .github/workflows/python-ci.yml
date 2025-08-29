@@ -6,8 +6,9 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-  schedule: # 🔹 запуск по расписанию каждый день в 01:00 UTC
+  schedule: # запуск по расписанию каждый день в 01:00 UTC
     - cron: '0 1 * * *'
+
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
@@ -52,3 +53,36 @@ jobs:
           path: |
             report.xml
             allure-results/
+
+      # 🔹 новый шаг — скачиваем и устанавливаем allure-cli
+      - name: Install Allure CLI
+        run: |
+          wget https://github.com/allure-framework/allure2/releases/download/2.29.0/allure-2.29.0.zip
+          unzip allure-2.29.0.zip -d /tmp/allure
+
+      # 🔹 новый шаг — генерируем красивый HTML отчёт
+      - name: Generate Allure Report
+        run: |
+          /tmp/allure/allure-2.29.0/bin/allure generate allure-results -o allure-report --clean
+
+      # 🔹 новый шаг — загружаем HTML отчёт как артефакт
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+
+      # 🔹 новый шаг — публикуем Allure Report в GitHub Pages
+      - name: Deploy Allure Report to Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
+
+      # 🔹 новый шаг — отправка ссылки в Telegram
+      - name: Send Telegram message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }} # id чата/юзера
+          token: ${{ secrets.TELEGRAM_TOKEN }} # токен бота
+          message: "✅ Allure Report доступен: https://<user>.github.io/<repo>/"
