@@ -1,5 +1,6 @@
-allure-pytest==2.14.3
-allure-python-commons==2.14.3
+pytest==7.4.0
+allure-pytest==2.13.1
+allure-python-commons==2.13.1
 astroid==3.3.11
 attrs==25.3.0
 black==25.1.0
@@ -23,7 +24,6 @@ pluggy==1.6.0
 pyee==13.0.0
 Pygments==2.19.2
 pylint==3.3.7
-pytest==8.4.1
 requests==2.32.4
 tomlkit==0.13.3
 typing_extensions==4.14.0
